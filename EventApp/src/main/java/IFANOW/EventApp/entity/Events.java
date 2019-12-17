@@ -3,7 +3,10 @@ package IFANOW.EventApp.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "events")
@@ -16,8 +19,9 @@ public class Events implements Serializable {
 	@Column(name = "user_id")
     private Integer userid;
 	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name = "timestamp")
-	private String timestamp;
+	private Timestamp timestamp;
 	
 	@Column(name = "location")
 	private String location;
@@ -52,7 +56,7 @@ public class Events implements Serializable {
 	
 	
 	
-	public Events(Integer transactionid, Integer userid, String timestamp, String location, String noun, String verb,
+	public Events(Integer transactionid, Integer userid, Timestamp timestamp, String location, String noun, String verb,
 			String timespent, String bank, String merchantId, Long value, String mode, String text,
 			String description) {
 		this.transactionid = transactionid;
@@ -70,7 +74,7 @@ public class Events implements Serializable {
 		this.description = description;
 	}
 
-	public Events(Integer userid, String timestamp, String location, String noun, String verb, String timespent,
+	public Events(Integer userid, Timestamp timestamp, String location, String noun, String verb, String timespent,
 			String bank, String merchantId, Long value, String mode, String text, String description) {
 		this.userid = userid;
 		this.timestamp = timestamp;
@@ -91,7 +95,7 @@ public class Events implements Serializable {
 		
 	}
 	
-	public Events(Integer userid, String timestamp, String location, String noun, String verb, String timespent,
+	public Events(Integer userid, Timestamp timestamp, String location, String noun, String verb, String timespent,
 			String bank, String merchantId, Long value, String mode, String text) {
 		this.userid = userid;
 		this.timestamp = timestamp;
@@ -131,14 +135,14 @@ public class Events implements Serializable {
 
 
 
-	public String getTimestamp() {
+	public Timestamp getTimestamp() {
 		return timestamp;
 	}
 
 
 
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
 	}
 

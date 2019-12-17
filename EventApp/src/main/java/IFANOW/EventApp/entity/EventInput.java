@@ -1,12 +1,17 @@
 package IFANOW.EventApp.entity;
 
+import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class EventInput {
 
 	private Integer transactionid;
 	
 	private Integer userid;
 	
-	private String timestamp;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Timestamp timestamp;
 	
 	private String location;
 	
@@ -22,7 +27,7 @@ public class EventInput {
 	
 	
 
-	public EventInput(Integer transactionid, Integer userid, String timestamp, String location, String noun,
+	public EventInput(Integer transactionid, Integer userid, Timestamp timestamp, String location, String noun,
 			String verb, String properties, String text) {
 		this.transactionid = transactionid;
 		this.userid = userid;
@@ -34,7 +39,7 @@ public class EventInput {
 		this.text = text;
 	}
 
-	public EventInput(Integer userid, String timestamp, String location, String noun, String verb, String properties,
+	public EventInput(Integer userid, Timestamp timestamp, String location, String noun, String verb, String properties,
 			String text) {
 		this.userid = userid;
 		this.timestamp = timestamp;
@@ -48,7 +53,7 @@ public class EventInput {
 	public EventInput() {
 	}
 
-	public EventInput(Integer userid, String timestamp, String location, String noun, String verb, String properties) {
+	public EventInput(Integer userid, Timestamp timestamp, String location, String noun, String verb, String properties) {
 		this.userid = userid;
 		this.timestamp = timestamp;
 		this.location = location;
@@ -75,11 +80,11 @@ public class EventInput {
 		this.userid = userid;
 	}
 
-	public String getTimestamp() {
+	public Timestamp getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
 	}
 
